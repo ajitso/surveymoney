@@ -1,0 +1,463 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SurveyMoney - Earn by Taking Surveys</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHHPS8TF9F">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-ZHHPS8TF9F');
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-poll"></i>
+                <h1>SurveyMoney</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-item active" data-target="home">Home</a></li>
+                <li><a href="#" class="nav-item" data-target="surveys">Surveys</a></li>
+                <li><a href="#" class="nav-item" data-target="earnings">Earnings</a></li>
+                <li><a href="#" class="nav-item" data-target="profile">Profile</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button id="loginBtn">Login</button>
+                <button id="signupBtn">Sign Up</button>
+            </div>
+            <div class="user-profile hidden">
+                <span id="username">User</span>
+                <span id="userPoints">0 pts</span>
+                <button id="logoutBtn">Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section-active">
+            <div class="hero">
+                <div class="hero-content">
+                    <h2>Turn Your Opinions Into Cash</h2>
+                    <p>Complete surveys and earn money directly to your preferred payment method.</p>
+                    <button id="getStartedBtn">Get Started</button>
+                </div>
+                <div class="hero-image">
+                    <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="100" y="50" width="400" height="300" rx="20" fill="#f0f4f8" />
+                        <rect x="130" y="90" width="340" height="40" rx="5" fill="#dbe4ff" />
+                        <rect x="130" y="150" width="340" height="40" rx="5" fill="#dbe4ff" />
+                        <rect x="130" y="210" width="340" height="40" rx="5" fill="#dbe4ff" />
+                        <rect x="130" y="270" width="160" height="40" rx="5" fill="#4263eb" />
+                        <circle cx="500" cy="60" r="30" fill="#fcc419" />
+                        <path d="M490,60 L510,60 M500,50 L500,70" stroke="#fff" stroke-width="4" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h3>Take Surveys</h3>
+                    <p>Complete surveys from our trusted partners and share your valuable opinions.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-coins"></i>
+                    <h3>Earn Rewards</h3>
+                    <p>Get points or direct cash for each completed survey based on its complexity.</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-wallet"></i>
+                    <h3>Easy Withdrawal</h3>
+                    <p>Cash out your earnings via UPI, Paytm, or bank transfer with minimal fees.</p>
+                </div>
+            </div>
+
+            <div class="testimonials">
+                <h2>What Our Users Say</h2>
+                <div class="testimonial-container">
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            <p>"I've earned over ₹5,000 in just two months by taking surveys in my free time!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <p>- Priya S.</p>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            <p>"The platform is so easy to use, and the payments are always on time."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <p>- Rahul M.</p>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-text">
+                            <p>"I love how I can withdraw my earnings directly to my UPI account instantly."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <p>- Ananya K.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Surveys Section -->
+        <section id="surveys" class="hidden">
+            <div class="section-header">
+                <h2>Available Surveys</h2>
+                <p>Complete these surveys to earn rewards</p>
+            </div>
+            
+            <div class="auth-required-message">
+                <i class="fas fa-lock"></i>
+                <h3>Login Required</h3>
+                <p>Please login or create an account to access surveys</p>
+                <div class="auth-actions">
+                    <button id="surveyLoginBtn">Login</button>
+                    <button id="surveySignupBtn">Sign Up</button>
+                </div>
+            </div>
+
+            <div class="surveys-container hidden">
+                <!-- Surveys will be loaded dynamically -->
+            </div>
+        </section>
+
+        <!-- Earnings Section -->
+        <section id="earnings" class="hidden">
+            <div class="section-header">
+                <h2>Your Earnings</h2>
+                <p>Track and withdraw your survey earnings</p>
+            </div>
+            
+            <div class="auth-required-message">
+                <i class="fas fa-lock"></i>
+                <h3>Login Required</h3>
+                <p>Please login or create an account to view your earnings</p>
+                <div class="auth-actions">
+                    <button id="earningsLoginBtn">Login</button>
+                    <button id="earningsSignupBtn">Sign Up</button>
+                </div>
+            </div>
+
+            <div class="earnings-dashboard hidden">
+                <div class="earnings-summary">
+                    <div class="earnings-card">
+                        <h3>Total Earned</h3>
+                        <p class="amount">₹<span id="totalEarned">0</span></p>
+                    </div>
+                    <div class="earnings-card">
+                        <h3>Available Balance</h3>
+                        <p class="amount">₹<span id="availableBalance">0</span></p>
+                    </div>
+                    <div class="earnings-card">
+                        <h3>Pending Rewards</h3>
+                        <p class="amount">₹<span id="pendingRewards">0</span></p>
+                    </div>
+                </div>
+
+                <div class="withdrawal-section">
+                    <h3>Withdraw Earnings</h3>
+                    <form id="withdrawalForm">
+                        <div class="form-group">
+                            <label for="withdrawAmount">Amount (₹)</label>
+                            <input type="number" id="withdrawAmount" min="10" step="1" placeholder="Minimum ₹10">
+                            <div class="withdrawal-note">
+                                <i class="fas fa-info-circle"></i> Requires minimum 500 points to withdraw. Minimum withdrawal amount is ₹10.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Payment Method</label>
+                            <div class="payment-methods">
+                                <div class="payment-method">
+                                    <input type="radio" id="upi" name="paymentMethod" value="upi" checked>
+                                    <label for="upi"><i class="fas fa-mobile-alt"></i> UPI</label>
+                                </div>
+                                <div class="payment-method">
+                                    <input type="radio" id="paytm" name="paymentMethod" value="paytm">
+                                    <label for="paytm"><i class="fas fa-wallet"></i> Paytm</label>
+                                </div>
+                                <div class="payment-method">
+                                    <input type="radio" id="bank" name="paymentMethod" value="bank">
+                                    <label for="bank"><i class="fas fa-university"></i> Bank Transfer</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group payment-details" id="upiDetails">
+                            <label for="upiId">UPI ID</label>
+                            <input type="text" id="upiId" placeholder="yourname@upi">
+                        </div>
+                        <div class="form-group payment-details hidden" id="paytmDetails">
+                            <label for="paytmNumber">Paytm Number</label>
+                            <input type="text" id="paytmNumber" placeholder="10-digit mobile number">
+                        </div>
+                        <div class="form-group payment-details hidden" id="bankDetails">
+                            <label for="accountNumber">Account Number</label>
+                            <input type="text" id="accountNumber" placeholder="Enter your account number">
+                            <label for="ifscCode">IFSC Code</label>
+                            <input type="text" id="ifscCode" placeholder="IFSC code">
+                            <label for="accountHolderName">Account Holder Name</label>
+                            <input type="text" id="accountHolderName" placeholder="Name as per bank records">
+                        </div>
+                        <button type="submit" id="withdrawBtn">Withdraw</button>
+                    </form>
+                </div>
+
+                <div class="transaction-history">
+                    <h3>Transaction History</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="transactionHistory">
+                            <!-- Transaction history will be loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="hidden">
+            <div class="section-header">
+                <h2>Your Profile</h2>
+                <p>Manage your account information</p>
+            </div>
+            
+            <div class="auth-required-message">
+                <i class="fas fa-lock"></i>
+                <h3>Login Required</h3>
+                <p>Please login or create an account to access your profile</p>
+                <div class="auth-actions">
+                    <button id="profileLoginBtn">Login</button>
+                    <button id="profileSignupBtn">Sign Up</button>
+                </div>
+            </div>
+
+            <div class="profile-details hidden">
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="profile-data">
+                        <h3 id="profileName">John Doe</h3>
+                        <p id="profileEmail"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e3898c8b8da3869b828e938f86cd808c8e">[email&#160;protected]</a></p>
+                        <p id="profileJoined">Joined: January 1, 2023</p>
+                        <p id="profileSurveys">Surveys Completed: 0</p>
+                    </div>
+                </div>
+
+                <div class="profile-edit">
+                    <h3>Edit Profile</h3>
+                    <form id="profileForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit">Update Profile</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="account-settings">
+                    <h3>Account Settings</h3>
+                    <div class="settings-option">
+                        <button id="changePasswordBtn">Change Password</button>
+                    </div>
+                    <div class="settings-option">
+                        <label for="notificationToggle">Email Notifications</label>
+                        <label class="switch">
+                            <input type="checkbox" id="notificationToggle" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Authentication Modals -->
+    <div class="modal hidden" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Login to Your Account</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <div class="form-group forgot-password">
+                    <a href="#" id="forgotPasswordLink">Forgot Password?</a>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <p>Don't have an account? <a href="#" id="loginToSignup">Sign Up</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal hidden" id="signupModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Create Your Account</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" required>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="termsAgree" required>
+                        <span class="checkmark"></span>
+                        I agree to the <a href="#">Terms and Conditions</a>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Create Account</button>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <p>Already have an account? <a href="#" id="signupToLogin">Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal hidden" id="forgotPasswordModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Reset Your Password</h2>
+            <p>Enter your email address and we'll send you instructions to reset your password.</p>
+            <form id="forgotPasswordForm">
+                <div class="form-group">
+                    <label for="resetEmail">Email</label>
+                    <input type="email" id="resetEmail" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Send Reset Link</button>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <p>Remember your password? <a href="#" id="backToLogin">Back to Login</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal hidden" id="changePasswordModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Change Your Password</h2>
+            <form id="changePasswordForm">
+                <div class="form-group">
+                    <label for="currentPassword">Current Password</label>
+                    <input type="password" id="currentPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password</label>
+                    <input type="password" id="newPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmNewPassword">Confirm New Password</label>
+                    <input type="password" id="confirmNewPassword" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Update Password</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast hidden" id="toastNotification">
+        <div class="toast-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="toast-content">
+            <p id="toastMessage">Operation successful!</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-poll"></i>
+                <h2>SurveyMoney</h2>
+                <p>Turn your opinions into cash</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Surveys</a></li>
+                    <li><a href="#">Earnings</a></li>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h3>Stay Updated</h3>
+                <p>Subscribe to our newsletter for the latest survey opportunities</p>
+                <form>
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 SurveyMoney. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
+</body>
+</html>
